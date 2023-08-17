@@ -1,0 +1,74 @@
+﻿@model IEnumerable<Carrefas.Application.ViewModels.ProdutoViewModel>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Lista de produtos</h1>
+
+<p>
+    <div class="col-md-8">
+        <div>
+            <div class="pull-right">
+                <a href="@Url.Action("Create", "Produtos")" class="btn btn-primary">
+                    <span title="Detalhes" class="glyphicon glyphicon-plus-sign"></span> Novo Produto
+                </a>
+            </div>
+        </div>
+    </div>
+
+
+    @* <a asp-action="Create">Create New</a>*@
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Nome)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Descricao)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Valor)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Ativo)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Nome)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Descricao)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Valor)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Ativo)
+                </td>
+                <td>
+
+                    <a href="@Url.Action("Edit", "Produtos", new {id = item.id})" class="btn btn-warning">
+                        Editar</a> |
+
+                    <a href="@Url.Action("Details", "Produtos", new {id = item.id})" class="btn btn-primary">
+                        Detalhes</a> |
+
+                    <a href="@Url.Action("Delete", "Produtos", new {id = item.id})" class="btn btn-danger">
+                        Deletar</a>
+                </td>
+            </tr>
+        }
+
+
+    </tbody>
+</table>
+
