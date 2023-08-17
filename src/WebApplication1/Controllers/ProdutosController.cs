@@ -17,6 +17,7 @@ namespace WebApplication1.Controllers
             return await _produtoApplicationService.ListarTodosProdutos() != null ?
                         View(await _produtoApplicationService.ListarTodosProdutos()) :
                         Problem("Entity set 'Contexto.Produtos'  is null.");
+
         }
 
         public IActionResult Create()
